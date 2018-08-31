@@ -4,7 +4,7 @@ class player(userid,username):
         super(player, self).__init__()
         self.arg = arg
 
-class game(object):
+class cricket(object):
     """docstring for game."""
     def __init__(self, arg):
         super(game, self).__init__()
