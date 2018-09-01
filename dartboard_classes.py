@@ -10,11 +10,12 @@ class player():
 
 class cricket():
     def __init__(self):
-        self.datetimestamp = datetime.now()
+        self.game_start = datetime.now()
+        self.game_end = ''
         self.gameid = '' """call the server, return max game id, increment by 1"""
         self.game_type = 'cricket'
-        self.player1_scoreboard = {'20':0,'19':0,'18':0,'17':0,'16':0,'15':0,'Bull':0}
-        self.player2_scoreboard = {'20':0,'19':0,'18':0,'17':0,'16':0,'15':0,'Bull':0}
+        self.player1_scoreboard = {'20':0,'19':0,'18':0,'17':0,'16':0,'15':0,'25':0}
+        self.player2_scoreboard = {'20':0,'19':0,'18':0,'17':0,'16':0,'15':0,'25':0}
         self.player1_score = 0
         self.player2_score = 0
 
