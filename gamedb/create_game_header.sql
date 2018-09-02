@@ -4,9 +4,12 @@ CREATE TABLE IF NOT EXISTS game_header (
  game_type text,
  game_start datetime,
  game_end datetime,
- FOREIGN KEY (player1_id) REFERENCES player (id)
- FOREIGN KEY (player2_id) REFERENCES player (id)
- FOREIGN KEY (winner_id) REFERENCES player (id)
+ player1_id integer,
+ player2_id integer,
+ winner_id integer,
  player1_score integer,
- player2_score integer
+ player2_score integer,
+ FOREIGN KEY (player1_id) REFERENCES player (id),
+ FOREIGN KEY (player2_id) REFERENCES player (id),
+ FOREIGN KEY (winner_id) REFERENCES player (id)
 );
