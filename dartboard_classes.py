@@ -1,10 +1,7 @@
 import datetime
 
 class player():
-    def __init__(self):
-        self.userid = ''
-        self.username = ''
-    def setup_user(self, userid, username):
+    def __init__(self,userid,username):
         self.userid = userid
         self.username = username
 
