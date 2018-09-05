@@ -109,7 +109,7 @@ def delete_game_header(conn, id):
 
 def delete_game_line(conn,game_id):
     """
-    Delete a game_line by game_line id
+    Delete a latest game_line by game_id
     :param conn:  Connection to the SQLite database
     :param id: id of the player
     :return:
