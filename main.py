@@ -1,12 +1,12 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
 
-class cricketGame(Widget):
+class dartboardosGame(Widget):
     pass
 
-class dartboardos(App):
+class dartboardosApp(App):
     def build(self):
-        return cricketGame()
+        return dartboardosGame()
 
 if __name__ == '__main__':
-    dartboardos().run()
+    dartboardosApp().run()

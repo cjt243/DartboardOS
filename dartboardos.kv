@@ -1,0 +1,22 @@
+#:kivy 1.0.9
+
+<dartboardosGame>:
+    canvas:
+        Rectangle:
+            pos: self.center_x -5,0
+            size: 10, self.height
+        Rectangle:
+            pos: 0, root.top - 112
+            size: self.width, 5
+
+    Label:
+        font_size: 48
+        center_x: root.width / 4
+        top: root.top - 10
+        text: "Player 1"
+
+    Label:
+        font_size: 48
+        center_x: root.width *3/4
+        top: root.top - 10
+        text: "Player 2"
