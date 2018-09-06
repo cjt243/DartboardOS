@@ -1,4 +1,5 @@
 import datetime
+from database_functions import * as df
 
 class player():
     def __init__(self,userid,username):
@@ -9,13 +10,12 @@ class cricket():
     def __init__(self):
         self.game_start = datetime.now()
         self.game_end = ''
-        self.gameid = '' """call the server, return max game id, increment by 1"""
+        self.gameid = """_create_game_header()"""
         self.game_type = 'cricket'
         self.player1_scoreboard = {'20':0,'19':0,'18':0,'17':0,'16':0,'15':0,'25':0}
         self.player2_scoreboard = {'20':0,'19':0,'18':0,'17':0,'16':0,'15':0,'25':0}
         self.player1_score = 0
         self.player2_score = 0
-
 
     def _check_if_open(self, player_num,dart_val):
         """when a hit is recorded, check to see if the other player has
@@ -33,6 +33,10 @@ class cricket():
 
     def _create_game_line(self):
         """logic to write game line to db, need to pass in relevant info"""
+
+    def _create_game_header(self):
+        """logic to create a new game header"""
+        """call the db, return max game id, increment by 1"""
 
     def mark_hit(self, player_num,dart_val):
         dart_val = str(dart_val)
