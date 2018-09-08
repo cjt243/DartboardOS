@@ -3,11 +3,16 @@
 <dartboardosGame>:
     canvas:
         Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'chalkboard.jpg'
+        Rectangle:
             pos: self.center_x -5,0
             size: 10, self.height
         Rectangle:
             pos: 0, root.top - 112
             size: self.width, 5
+
 
     Label:
         font_size: 48
