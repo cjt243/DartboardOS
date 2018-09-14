@@ -1,5 +1,5 @@
 import datetime
-from database_functions import * as df
+from database_functions import *
 
 class player():
     def __init__(self,userid,username):
@@ -31,13 +31,6 @@ class cricket():
             else:
                 return False
 
-    def _create_game_line(self):
-        """logic to write game line to db, need to pass in relevant info"""
-
-    def _create_game_header(self):
-        """logic to create a new game header"""
-        """call the db, return max game id, increment by 1"""
-
     def mark_hit(self, player_num,dart_val):
         dart_val = str(dart_val)
         if player_num == 1:
@@ -64,10 +57,3 @@ class cricket():
             _create_game_line()
         else:
             exit()
-
-    def remove_game_line(self):
-        """Function for the undo button
-        1. Fetch game line
-        2. If points were scored, subtract points from player score
-        3. Remove 1 from value of player scoreboard
-        4. Delete game line"""
