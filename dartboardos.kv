@@ -1,5 +1,12 @@
 #:kivy 1.0.9
 
+<mainMenu>:
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'chalkboard.jpg'
+
 <dartboardosGame>:
     canvas:
         Rectangle:
@@ -21,7 +28,6 @@
         center_x: root.width / 5
         top: root.top - 105/6
         text: "Player 1"
-
     Label:
         font_size: 32
         center_x: root.width *4/5
@@ -62,4 +68,9 @@
         center_x: root.width *1/2
         top: root.top - 700
         text: "Bull"
-<ScoreButton@Button>:
+    Button:
+        id: p120
+        center_x: root.width / 5 - 9
+        top: root.top - 115
+        size:(160,80)
+        background_color: 0, 0, 0, 0

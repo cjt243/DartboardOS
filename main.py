@@ -9,11 +9,18 @@ Config.set('graphics', 'height', '800')
 class dartboardosGame(Widget):
     pass
 
+class mainMenu(Widget):
+    pass
+
+
 class dartboardosApp(App):
     def build(self):
         return dartboardosGame()
 
-
+class mainMenuScreen(App):
+    def build(self):
+        return mainMenu()
 
 if __name__ == '__main__':
-    dartboardosApp().run()
+    # dartboardosApp().run()
+    mainMenuScreen().run()
