@@ -1,83 +1,86 @@
 #:kivy 1.0.9
 
 <mainMenu>:
-    canvas:
-        Rectangle:
-            pos: self.pos
-            size: self.size
-            source: 'assets/images/chalkboard.jpg'
+    Widget:
+        canvas:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: 'assets/images/chalkboard.jpg'
+
         Button:
             text: 'Test'
             center_x: root.width / 5 - 9
             top: root.top - 115
             size:(160,80)
-            on_press: root.manager.current = 'scoreboard'
+            # on_press: root.manager.current = 'scoreboard'
 
 <dartboardosGame>:
-    canvas:
-        Rectangle:
-            pos: self.pos
-            size: self.size
-            source: 'assets/images/chalkboard.jpg'
-        Rectangle:
-            pos: self.center_x-60,0
-            size: 5, self.height
-        Rectangle:
-            pos: self.center_x+60,0
-            size: 5, self.height
-        Rectangle:
-            pos: 0, root.top - 112
-            size: self.width, 5
+    Widget:
+        canvas:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: 'assets/images/chalkboard.jpg'
+            Rectangle:
+                pos: self.center_x-60,0
+                size: 5, self.height
+            Rectangle:
+                pos: self.center_x+60,0
+                size: 5, self.height
+            Rectangle:
+                pos: 0, root.top - 112
+                size: self.width, 5
 
-    Label:
-        font_size: 32
-        center_x: root.width / 5
-        top: root.top - 105/6
-        text: "Player 1"
-    Label:
-        font_size: 32
-        center_x: root.width *4/5
-        top: root.top - 10
-        text: "Player 2"
-    Label:
-        font_size: 52
-        center_x: root.width *1/2
-        top: root.top - 100
-        text: "20"
-    Label:
-        font_size: 52
-        center_x: root.width *1/2
-        top: root.top - 200
-        text: "19"
-    Label:
-        font_size: 52
-        center_x: root.width *1/2
-        top: root.top - 300
-        text: "18"
-    Label:
-        font_size: 52
-        center_x: root.width *1/2
-        top: root.top - 400
-        text: "17"
-    Label:
-        font_size: 52
-        center_x: root.width *1/2
-        top: root.top - 500
-        text: "16"
-    Label:
-        font_size: 52
-        center_x: root.width *1/2
-        top: root.top - 600
-        text: "15"
-    Label:
-        font_size: 52
-        center_x: root.width *1/2
-        top: root.top - 700
-        text: "Bull"
-    Button:
-        id: p120
-        center_x: root.width / 5 - 9
-        top: root.top - 115
-        size:(160,80)
-        background_color: 0, 0, 0, 0
-        on_press: root.manager.current = 'menu'
+        Label:
+            font_size: 32
+            center_x: root.width / 5
+            top: root.top - 105/6
+            text: "Player 1"
+        Label:
+            font_size: 32
+            center_x: root.width *4/5
+            top: root.top - 10
+            text: "Player 2"
+        Label:
+            font_size: 52
+            center_x: root.width *1/2
+            top: root.top - 100
+            text: "20"
+        Label:
+            font_size: 52
+            center_x: root.width *1/2
+            top: root.top - 200
+            text: "19"
+        Label:
+            font_size: 52
+            center_x: root.width *1/2
+            top: root.top - 300
+            text: "18"
+        Label:
+            font_size: 52
+            center_x: root.width *1/2
+            top: root.top - 400
+            text: "17"
+        Label:
+            font_size: 52
+            center_x: root.width *1/2
+            top: root.top - 500
+            text: "16"
+        Label:
+            font_size: 52
+            center_x: root.width *1/2
+            top: root.top - 600
+            text: "15"
+        Label:
+            font_size: 52
+            center_x: root.width *1/2
+            top: root.top - 700
+            text: "Bull"
+        Button:
+            id: p120
+            center_x: root.width / 5 - 9
+            top: root.top - 115
+            size:(160,80)
+            background_color: 0, 0, 0, 0
+            on_press: root.manager.current = 'menu'
