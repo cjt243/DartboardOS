@@ -5,7 +5,13 @@
         Rectangle:
             pos: self.pos
             size: self.size
-            source: 'chalkboard.jpg'
+            source: 'assets/images/chalkboard.jpg'
+        Button:
+            text: 'Test'
+            center_x: root.width / 5 - 9
+            top: root.top - 115
+            size:(160,80)
+            on_press: root.manager.current = 'scoreboard'
 
 <dartboardosGame>:
     canvas:
@@ -74,3 +80,4 @@
         top: root.top - 115
         size:(160,80)
         background_color: 0, 0, 0, 0
+        on_press: root.manager.current = 'menu'
