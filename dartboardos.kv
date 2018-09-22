@@ -1,6 +1,7 @@
 #:kivy 1.0.9
 
 <Menu>:
+    name: 'menu'
     Widget:
         canvas:
             Rectangle:
@@ -23,11 +24,13 @@
             top: root.top - 105/6 - 160
             text: "DartboardOS!"
         Button:
+            id: player1select
             text: 'Test'
             center_x: root.width / 2
             top: root.top - 600
             size:(160,80)
-            on_press: root.manager.current = 'cricket'
+            on_select:
+            #on_press: root.manager.current = 'cricket'
 
 <Cricket>:
     Widget:
