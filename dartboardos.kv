@@ -1,21 +1,35 @@
 #:kivy 1.0.9
 
-<mainMenu>:
+<Menu>:
     Widget:
         canvas:
             Rectangle:
                 pos: self.pos
                 size: self.size
                 source: 'assets/images/chalkboard.jpg'
-
+        Label:
+            font_size: 60
+            center_x: root.width / 2
+            top: root.top - 105/6
+            text: "Welcome"
+        Label:
+            font_size: 60
+            center_x: root.width / 2
+            top: root.top - 105/6 - 80
+            text: "to"
+        Label:
+            font_size: 60
+            center_x: root.width / 2
+            top: root.top - 105/6 - 160
+            text: "DartboardOS!"
         Button:
             text: 'Test'
-            center_x: root.width / 5 - 9
-            top: root.top - 115
+            center_x: root.width / 2
+            top: root.top - 600
             size:(160,80)
-            # on_press: root.manager.current = 'scoreboard'
+            on_press: root.manager.current = 'cricket'
 
-<dartboardosGame>:
+<Cricket>:
     Widget:
         canvas:
             Rectangle:
