@@ -1,5 +1,18 @@
 import datetime
 from database_functions import *
+from kivy.properties import ListProperty, NumericProperty, StringProperty
+
+
+class menu_state():
+    def __init__(self):
+        self.player_list_player1 = ListProperty([])
+        # self.player_list_player2 = ListProperty([])
+        self._get_players()
+    def _get_players(self):
+        sql = 'select username from player;'
+        output = execute_select_statement(create_connection('gamedb/dartboardos.db'),sql)
+        self.player_list_player1 = list(zip(*output))[0]
+        # self.player_list_player2 = self.player_list_player1
 
 class player():
     def __init__(self,userid,username):
