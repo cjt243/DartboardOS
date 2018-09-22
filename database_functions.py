@@ -22,6 +22,8 @@ def create_player(conn, player):
              VALUES (?,?)'''
     cur = conn.cursor()
     cur.execute(sql, player)
+    conn.commit()
+    conn.close()
     return cur.lastrowid
 
 def create_game_header(conn, game_header):
@@ -35,6 +37,8 @@ def create_game_header(conn, game_header):
               VALUES(?,?,?,?,?,?,?,?) '''
     cur = conn.cursor()
     cur.execute(sql, game_header)
+    conn.commit()
+    # conn.close()
     return cur.lastrowid
 
 def create_game_line(conn, game_line):
@@ -48,10 +52,8 @@ def create_game_line(conn, game_line):
               VALUES(?,?,?,?,?) '''
     cur = conn.cursor()
     cur.execute(sql, game_line)
-
-
-
-
+    conn.commit()
+    # conn.close()
     return cur.lastrowid
 
 def update_player_username(conn, player_update):
@@ -66,6 +68,8 @@ def update_player_username(conn, player_update):
                   WHERE id = ?'''
         cur = conn.cursor()
         cur.execute(sql, player_update)
+        conn.commit()
+        conn.close()
         return cur.lastrowid
 
 def update_game_header(conn,game_header_update):
@@ -83,6 +87,8 @@ def update_game_header(conn,game_header_update):
                   WHERE id = ?'''
         cur = conn.cursor()
         cur.execute(sql, game_header_update)
+        conn.commit()
+        conn.close()
         return cur.lastrowid
 
 def delete_player(conn, id):
@@ -95,6 +101,8 @@ def delete_player(conn, id):
     sql = 'DELETE FROM player WHERE id=?'
     cur = conn.cursor()
     cur.execute(sql, (id,))
+    conn.commit()
+    conn.close()
 
 def delete_game_header(conn, id):
     """
@@ -106,6 +114,8 @@ def delete_game_header(conn, id):
     sql = 'DELETE FROM game_header WHERE id=?'
     cur = conn.cursor()
     cur.execute(sql, (id,))
+    conn.commit()
+    # conn.close()
 
 def delete_game_line(conn,game_id):
     """
@@ -117,3 +127,13 @@ def delete_game_line(conn,game_id):
     sql = 'DELETE FROM player WHERE game_id=? and id=max(id)'
     cur = conn.cursor()
     cur.execute(sql, (game_id,))
+    conn.commit()
+    # conn.close()
+
+def execute_select_statement(conn, sql):
+    cur = conn.cursor()
+    cur.execute(sql)
+    # print(cur.fetchall())
+    result = cur.fetchall()
+    conn.close()
+    return result
