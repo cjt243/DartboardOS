@@ -1,8 +1,9 @@
 #:kivy 1.0.9
 
 <Menu>:
-    name: 'menu'
     Widget:
+        name: 'menu'
+        id: menu
         canvas:
             Rectangle:
                 pos: self.pos
@@ -23,14 +24,42 @@
             center_x: root.width / 2
             top: root.top - 105/6 - 160
             text: "DartboardOS!"
+        Label:
+            font_size: 42
+            center_x: root.width / 2
+            top: root.top - 105/6 - 260
+            text: "Cricket"
+        Label:
+            font_size: 32
+            center_x: root.width / 2
+            top: root.top - 490
+            text: "vs"
+
         Button:
             id: player1select
+            text: 'Test'
+            center_x: root.width / 2
+            top: root.top - 400
+            size:(160,80)
+            on_select:
+            #on_press: root.manager.current = 'cricket'
+        Button:
+            id: player2select
             text: 'Test'
             center_x: root.width / 2
             top: root.top - 600
             size:(160,80)
             on_select:
-            #on_press: root.manager.current = 'cricket'
+            # on_press: root.manager.current = 'cricket'
+        Button:
+            id: start_game
+            text: 'Start Game'
+            center_x: root.width / 2
+            top: root.top - 700
+            size:(160,80)
+            on_select:
+            on_press: root.manager.current = 'cricket'
+
 
 <Cricket>:
     Widget:
@@ -50,11 +79,13 @@
                 size: self.width, 5
 
         Label:
+            id: player1label
             font_size: 32
             center_x: root.width / 5
             top: root.top - 105/6
-            text: "Player 1"
+            text: 'Player 1'
         Label:
+            id: player2label
             font_size: 32
             center_x: root.width *4/5
             top: root.top - 10
