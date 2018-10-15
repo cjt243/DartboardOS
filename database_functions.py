@@ -38,7 +38,7 @@ def create_game_header(conn, game_header):
     cur = conn.cursor()
     cur.execute(sql, game_header)
     conn.commit()
-    # conn.close()
+    conn.close()
     return cur.lastrowid
 
 def create_game_line(conn, game_line):
