@@ -58,11 +58,16 @@
             top: root.top - 700
             size:(160,80)
             on_select:
-            on_press: root.manager.current = 'cricket'
+            on_press:
+                root.initialize_game()
+                root.manager.current = 'cricket'
+                root.manager.transition.direction = 'left'
 
 
 <Cricket>:
     Widget:
+        name: 'cricket'
+        id: cricket
         canvas:
             Rectangle:
                 pos: self.pos
@@ -75,50 +80,62 @@
                 pos: self.center_x+60,0
                 size: 5, self.height
             Rectangle:
-                pos: 0, root.top - 112
+                pos: 0, root.top - 152
                 size: self.width, 5
-
         Label:
             id: player1label
-            font_size: 32
+            font_size: 24
             center_x: root.width / 5
-            top: root.top - 105/6
+            top: root.top
             text: 'Player 1'
         Label:
             id: player2label
-            font_size: 32
+            font_size: 24
             center_x: root.width *4/5
-            top: root.top - 10
+            top: root.top
             text: "Player 2"
+        Label:
+            id: player1score
+            font_size: 50
+            center_x: root.width / 5
+            top: root.top - 50
+            text: '0'
+        Label:
+            id: player2score
+            font_size: 50
+            center_x: root.width *4/5
+            top: root.top - 50
+            text: "0"
+
         Label:
             font_size: 52
             center_x: root.width *1/2
-            top: root.top - 100
+            top: root.top - 140
             text: "20"
         Label:
             font_size: 52
             center_x: root.width *1/2
-            top: root.top - 200
+            top: root.top - 233.33
             text: "19"
         Label:
             font_size: 52
             center_x: root.width *1/2
-            top: root.top - 300
+            top: root.top - 326.66
             text: "18"
         Label:
             font_size: 52
             center_x: root.width *1/2
-            top: root.top - 400
+            top: root.top - 419.99
             text: "17"
         Label:
             font_size: 52
             center_x: root.width *1/2
-            top: root.top - 500
+            top: root.top - 513.32
             text: "16"
         Label:
             font_size: 52
             center_x: root.width *1/2
-            top: root.top - 600
+            top: root.top - 606.65
             text: "15"
         Label:
             font_size: 52
@@ -126,9 +143,29 @@
             top: root.top - 700
             text: "Bull"
         Button:
+            id: exitbtn
+            center_x: root.width * 1/2 + 2
+            top: root.top - 0
+            background_color: 2, 0, 0, 0.8
+            size:(114,40)
+            on_press:
+                root.manager.current = 'menu'
+                root.manager.transition.direction = 'right'
+            text: 'Exit'
+            font_size: 20
+        Button:
+            id: undobtn
+            center_x: root.width * 1/2 + 2
+            top: root.top - 41
+            size:(114,108)
+            background_color: 0, 0, 2, 0.6
+            # on_press: root.manager.current = 'menu'
+            text: 'Undo'
+            font_size: 30
+        Button:
             id: p120
-            center_x: root.width / 5 - 9
-            top: root.top - 115
+            center_x: root.width / 5 - 5
+            top: root.top - 155
             size:(160,80)
             background_color: 0, 0, 0, 0
-            on_press: root.manager.current = 'menu'
+            # on_press: root.manager.current = 'menu'
