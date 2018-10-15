@@ -7,15 +7,23 @@ from kivy.properties import ListProperty, NumericProperty, StringProperty
 from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
 from kivy.uix.dropdown import DropDown
+import datetime
 from database_functions import *
 
 class Cricket(Screen):
-    # def __init__(self, **kwargs):
-    #     super(Cricket, self).__init__(**kwargs)
-    #     self.ids.player1label.text = root.menu.player1select.text
-
+    def __init__(self, **kwargs):
+        super(Cricket, self).__init__(**kwargs)
     def on_pre_enter(self):
         Window.size = (480,800)
+    def _set_active_players(self):
+        output_1 = execute_select_statement(create_connection('gamedb/dartboardos.db'),
+                   "select player1_id,username from game_header left join player on game_header.player1_id = player.id where game_header.id = (select max(id) from game_header);")
+        output_2 = execute_select_statement(create_connection('gamedb/dartboardos.db'),
+                   "select player2_id,username from game_header left join player on game_header.player2_id = player.id where game_header.id = (select max(id) from game_header);")
+        self.player1id = output_1[0][0]
+        self.ids.player1label.text = output_1[0][1]
+        self.player2id = output_2[0][0]
+        self.ids.player2label.text = output_2[0][1]
     pass
 
 class Menu(Screen):
@@ -41,6 +49,19 @@ class Menu(Screen):
         dropdown.bind(on_select=lambda instance, x: setattr(button_id, 'text', x))
     def on_pre_enter(self):
         Window.size = (480,800)
+    def initialize_game(self):
+        header = ['cricket',
+                  datetime.datetime.now(),
+                  '',
+                  execute_select_statement(create_connection('gamedb/dartboardos.db'),
+                  "select id from player where username = '{}';".format(self.ids.player1select.text))[0][0],
+                  execute_select_statement(create_connection('gamedb/dartboardos.db'),
+                  "select id from player where username = '{}';".format(self.ids.player2select.text))[0][0],
+                  0,
+                  0,
+                  0]
+        create_game_header(create_connection('gamedb/dartboardos.db'),header)
+        self.manager.get_screen('cricket')._set_active_players()
     pass
 
 class dartboardosApp(App):
