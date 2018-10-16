@@ -24,6 +24,101 @@ class Cricket(Screen):
         self.ids.player1label.text = output_1[0][1]
         self.player2id = output_2[0][0]
         self.ids.player2label.text = output_2[0][1]
+    def _setup_game(self):
+        output_1 = execute_select_statement(create_connection('gamedb/dartboardos.db'),
+                   "select max(id) from game_header;")
+        self.gameid = output_1[0][0]
+        self.game_end = ''
+        self.player1_scoreboard = {'20':0,'19':0,'18':0,'17':0,'16':0,'15':0,'25':0}
+        self.player2_scoreboard = {'20':0,'19':0,'18':0,'17':0,'16':0,'15':0,'25':0}
+        self.player1_score = 0
+        self.player2_score = 0
+    def mark_hit(self, player_num,dart_val):
+        dart_val = str(dart_val)
+        if player_num == 1:
+            if self.player1_scoreboard[dart_val] < 3:
+                self.player1_scoreboard[dart_val] += 1
+                self.terrible_function(player_num,dart_val)
+            else:
+                is_open = self._check_if_open(player_num, dart_val)
+                if is_open == True:
+                    point_val = int(dart_val)
+                    self.player1_score += point_val
+                else:
+                    point_val = 0
+            self.ids.player1score.text = str(self.player1_score)
+            # _create_game_line()
+        elif player_num == 2:
+            if self.player2_scoreboard[dart_val] < 3:
+                self.player2_scoreboard[dart_val] += 1
+                self.terrible_function(player_num,dart_val)
+            else:
+                is_open = self._check_if_open(player_num, dart_val)
+                if is_open == True:
+                    point_val = int(dart_val)
+                    self.player2_score += point_val
+                else:
+                    point_val = 0
+            self.ids.player2score.text = str(self.player2_score)
+            # _create_game_line()
+        else:
+            exit()
+    def _check_if_open(self, player_num,dart_val):
+        """when a hit is recorded, check to see if the other player has
+        closed out the number"""
+        if player_num == 1:
+            if self.player2_scoreboard[dart_val] < 3:
+                return True
+            else:
+                return False
+        if player_num == 2:
+            if self.player1_scoreboard[dart_val] < 3:
+                return True
+            else:
+                return False
+    # def update_button_label(self,player_num,button):
+    #     if player_num == 1:
+    #         if self.player1_scoreboard[dart_val] < 3:
+    #             retstr(self.player1_scoreboard[dart_val])
+    #         else:
+    #             button.text = '3'
+    #     if player_num == 2:
+    #         if self.player2_scoreboard[dart_val] < 3:
+    #             button.text = str(self.player2_scoreboard[dart_val])
+    #         else:
+    #             button.text = '3'
+    def terrible_function(self, player_num, dart_val):
+        id = str(player_num) + str(dart_val)
+        if id == '120':
+            self.ids.p120.text = str(self.player1_scoreboard[dart_val])
+        elif id == '119':
+            self.ids.p119.text = str(self.player1_scoreboard[dart_val])
+        elif id == '118':
+            self.ids.p118.text = str(self.player1_scoreboard[dart_val])
+        elif id == '117':
+            self.ids.p117.text = str(self.player1_scoreboard[dart_val])
+        elif id == '116':
+            self.ids.p116.text = str(self.player1_scoreboard[dart_val])
+        elif id == '115':
+            self.ids.p115.text = str(self.player1_scoreboard[dart_val])
+        elif id == '125':
+            self.ids.p125.text = str(self.player1_scoreboard[dart_val])
+        elif id == '220':
+            self.ids.p220.text = str(self.player2_scoreboard[dart_val])
+        elif id == '219':
+            self.ids.p219.text = str(self.player2_scoreboard[dart_val])
+        elif id == '218':
+            self.ids.p218.text = str(self.player2_scoreboard[dart_val])
+        elif id == '217':
+            self.ids.p217.text = str(self.player2_scoreboard[dart_val])
+        elif id == '216':
+            self.ids.p216.text = str(self.player2_scoreboard[dart_val])
+        elif id == '215':
+            self.ids.p215.text = str(self.player2_scoreboard[dart_val])
+        elif id == '225':
+            self.ids.p225.text = str(self.player2_scoreboard[dart_val])
+
+
     pass
 
 class Menu(Screen):
@@ -62,6 +157,7 @@ class Menu(Screen):
                   0]
         create_game_header(create_connection('gamedb/dartboardos.db'),header)
         self.manager.get_screen('cricket')._set_active_players()
+        self.manager.get_screen('cricket')._setup_game()
     pass
 
 class dartboardosApp(App):
