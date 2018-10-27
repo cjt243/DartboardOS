@@ -76,12 +76,12 @@ def update_game_header(conn,game_header_update):
         """
         Update game_header in the game_header table
         :param conn:
-        :param game_header_update (game_end, winner, player1_score, player2_score, game_id):
+        :param game_header_update (game_end, winner_id, player1_score, player2_score, game_id):
         :return: game_id
         """
         sql = ''' UPDATE game_header
                   SET game_end = ?,
-                      winner = ?,
+                      winner_id = ?,
                       player1_score = ?,
                       player2_score = ?
                   WHERE id = ?'''
@@ -130,7 +130,7 @@ def delete_game_line(conn,game_id):
     conn.commit()
     # conn.close()
 
-def execute_select_statement(conn, sql):
+def execute_sql_statement(conn, sql):
     cur = conn.cursor()
     cur.execute(sql)
     # print(cur.fetchall())
