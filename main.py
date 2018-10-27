@@ -113,7 +113,7 @@ class Cricket(Screen):
         else:
             pass
 
-    def _write_game_line(playerid,dart_val,ispoint):
+    def _write_game_line(self,playerid,dart_val,ispoint):
         if ispoint:
             points = int(dart_val)
         else:
