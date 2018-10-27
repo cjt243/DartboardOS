@@ -95,6 +95,18 @@
             top: root.top
             text: "Player 2"
         Label:
+            id: player1winner
+            font_size: 28
+            center_x: root.width / 5
+            top: root.top + 28
+            text: ''
+        Label:
+            id: player2winner
+            font_size: 28
+            center_x: root.width / 5
+            top: root.top + 28
+            text: ''
+        Label:
             id: player1score
             font_size: 50
             center_x: root.width / 5
@@ -151,6 +163,7 @@
             on_press:
                 root.manager.current = 'menu'
                 root.manager.transition.direction = 'right'
+                root._clear_game()
             text: 'Exit'
             font_size: 20
         Button:
