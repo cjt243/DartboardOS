@@ -38,30 +38,33 @@ class Cricket(Screen):
         if player_num == 1:
             if self.player1_scoreboard[dart_val] < 3:
                 self.player1_scoreboard[dart_val] += 1
-                self.terrible_function(player_num,dart_val)
+                self._write_game_line(self.player1id,dart_val,False)
+                self._terrible_function(player_num,dart_val)
             else:
                 is_open = self._check_if_open(player_num, dart_val)
                 if is_open == True:
                     point_val = int(dart_val)
+                    self._write_game_line(self.player1id,point_val,True)
                     self.player1_score += point_val
                 else:
                     point_val = 0
             self.ids.player1score.text = str(self.player1_score)
-            # _create_game_line()
         elif player_num == 2:
             if self.player2_scoreboard[dart_val] < 3:
                 self.player2_scoreboard[dart_val] += 1
-                self.terrible_function(player_num,dart_val)
+                self._write_game_line(self.player2id,dart_val,False)
+                self._terrible_function(player_num,dart_val)
             else:
                 is_open = self._check_if_open(player_num, dart_val)
                 if is_open == True:
                     point_val = int(dart_val)
+                    self._write_game_line(self.player2id,point_val,True)
                     self.player2_score += point_val
                 else:
                     point_val = 0
             self.ids.player2score.text = str(self.player2_score)
-            # _create_game_line()
         else:
+            print('Passed a player value != 1 or 2. Killing app.')
             exit()
     def _check_if_open(self, player_num,dart_val):
         """when a hit is recorded, check to see if the other player has
@@ -76,18 +79,8 @@ class Cricket(Screen):
                 return True
             else:
                 return False
-    # def update_button_label(self,player_num,button):
-    #     if player_num == 1:
-    #         if self.player1_scoreboard[dart_val] < 3:
-    #             retstr(self.player1_scoreboard[dart_val])
-    #         else:
-    #             button.text = '3'
-    #     if player_num == 2:
-    #         if self.player2_scoreboard[dart_val] < 3:
-    #             button.text = str(self.player2_scoreboard[dart_val])
-    #         else:
-    #             button.text = '3'
-    def terrible_function(self, player_num, dart_val):
+
+    def _terrible_function(self, player_num, dart_val):
         id = str(player_num) + str(dart_val)
         if id == '120':
             self.ids.p120.text = str(self.player1_scoreboard[dart_val])
@@ -117,9 +110,20 @@ class Cricket(Screen):
             self.ids.p215.text = str(self.player2_scoreboard[dart_val])
         elif id == '225':
             self.ids.p225.text = str(self.player2_scoreboard[dart_val])
+        else:
+            pass
 
-
-    pass
+    def _write_game_line(playerid,dart_val,ispoint):
+        if ispoint:
+            points = int(dart_val)
+        else:
+            points = 0
+        game_line = [self.gameid,
+                     datetime.datetime.now(),
+                     str(dart_val),
+                     points,
+                     playerid]
+        create_game_line(create_connection('gamedb/dartboardos.db'),game_line)
 
 class Menu(Screen):
     def __init__(self, **kwargs):
