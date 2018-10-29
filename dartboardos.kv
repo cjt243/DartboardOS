@@ -10,7 +10,7 @@
                 size: self.size
                 source: 'assets/images/chalkboard.jpg'
         Label:
-            font_size: 60
+            # font_size: 60
             center_x: root.width / 2
             top: root.top - 105/6
             text: "Welcome"
@@ -122,7 +122,7 @@
         Label:
             font_size: 52
             center_x: root.width *1/2
-            top: root.top - 152
+            top: root.top - 144
             text: "20"
         Label:
             font_size: 52
@@ -147,7 +147,7 @@
         Label:
             font_size: 52
             center_x: root.width *1/2
-            top: root.top - 606.65
+            top: root.top - 610.65
             text: "15"
         Label:
             font_size: 52
@@ -181,123 +181,179 @@
             top: root.top - 160
             size:(160,80)
             background_color: 0, 0, 0, 0
-            text: '0'
-            font_size: 52
             on_press: root.mark_hit(1,20)
+        Image:
+            id: p120_img
+            source: 'assets/images/transparent.png'
+            center_x: root.width / 5
+            top: root.top - 160
+            size:(160,70)
         Button:
             id: p220
             center_x: root.width*4/5
             top: root.top - 160
             size:(160,80)
             background_color: 0, 0, 0, 0
-            text: '0'
-            font_size: 52
             on_press: root.mark_hit(2,20)
+        Image:
+            id: p220_img
+            source: 'assets/images/transparent.png'
+            center_x: root.width*4/5
+            top: root.top - 160
+            size:(160,70)
         Button:
             id: p119
             center_x: root.width / 5
-            top: root.top - 253.33 - 5
+            top: root.top - 254.33
             size:(160,80)
             background_color: 0, 0, 0, 0
-            text: '0'
-            font_size: 52
             on_press: root.mark_hit(1,19)
+        Image:
+            id: p119_img
+            source: 'assets/images/transparent.png'
+            center_x: root.width / 5
+            top: root.top - 254.33
+            size:(160,70)
         Button:
             id: p219
             center_x: root.width*4/5
-            top: root.top - 253.33 - 5
+            top: root.top - 254.33
             size:(160,80)
             background_color: 0, 0, 0, 0
-            text: '0'
-            font_size: 52
             on_press: root.mark_hit(2,19)
+        Image:
+            id: p219_img
+            source: 'assets/images/transparent.png'
+            center_x: root.width*4/5
+            top: root.top - 254.33
+            size:(160,70)
         Button:
             id: p118
             center_x: root.width / 5
-            top: root.top - 346.66 - 5
+            top: root.top - 348.66
             size:(160,80)
             background_color: 0, 0, 0, 0
-            text: '0'
-            font_size: 52
             on_press: root.mark_hit(1,18)
+        Image:
+            id: p118_img
+            source: 'assets/images/transparent.png'
+            center_x: root.width / 5
+            top: root.top - 348.66
+            size:(160,70)
         Button:
             id: p218
             center_x: root.width*4/5
-            top: root.top - 346.66 - 5
+            top: root.top - 348.66
             size:(160,80)
             background_color: 0, 0, 0, 0
-            text: '0'
-            font_size: 52
             on_press: root.mark_hit(2,18)
+        Image:
+            id: p218_img
+            source: 'assets/images/transparent.png'
+            center_x: root.width *4/5
+            top: root.top - 348.66
+            size:(160,70)
         Button:
             id: p117
             center_x: root.width / 5
             top: root.top - 439.99 - 5
             size:(160,80)
             background_color: 0, 0, 0, 0
-            text: '0'
-            font_size: 52
             on_press: root.mark_hit(1,17)
+        Image:
+            id: p117_img
+            source: 'assets/images/transparent.png'
+            center_x: root.width / 5
+            top: root.top - 439.99 - 5
+            size:(160,70)
         Button:
             id: p217
             center_x: root.width*4/5
             top: root.top - 439.99 - 5
             size:(160,80)
             background_color: 0, 0, 0, 0
-            text: '0'
-            font_size: 52
             on_press: root.mark_hit(2,17)
+        Image:
+            id: p217_img
+            source: 'assets/images/transparent.png'
+            center_x: root.width*4/5
+            top: root.top - 439.99 - 5
+            size:(160,70)
         Button:
             id: p116
             center_x: root.width / 5
             top: root.top - 533.32 - 5
             size:(160,80)
             background_color: 0, 0, 0, 0
-            text: '0'
-            font_size: 52
             on_press: root.mark_hit(1,16)
+        Image:
+            id: p116_img
+            source: 'assets/images/transparent.png'
+            center_x: root.width / 5
+            top: root.top - 533.32 - 5
+            size:(160,70)
         Button:
             id: p216
             center_x: root.width*4/5
             top: root.top - 533.32 - 5
             size:(160,80)
             background_color: 0, 0, 0, 0
-            text: '0'
-            font_size: 52
             on_press: root.mark_hit(2,16)
+        Image:
+            id: p216_img
+            source: 'assets/images/transparent.png'
+            center_x: root.width*4/5
+            top: root.top - 533.32 - 5
+            size:(160,70)
         Button:
             id: p115
             center_x: root.width / 5
             top: root.top - 626.65 - 5
             size:(160,80)
             background_color: 0, 0, 0, 0
-            text: '0'
-            font_size: 52
             on_press: root.mark_hit(1,15)
+        Image:
+            id: p115_img
+            source: 'assets/images/transparent.png'
+            center_x: root.width / 5
+            top: root.top - 626.65 - 5
+            size:(160,70)
         Button:
             id: p215
             center_x: root.width*4/5
             top: root.top - 626.65 - 5
             size:(160,80)
             background_color: 0, 0, 0, 0
-            text: '0'
-            font_size: 52
             on_press: root.mark_hit(2,15)
+        Image:
+            id: p215_img
+            source: 'assets/images/transparent.png'
+            center_x: root.width*4/5
+            top: root.top - 626.65 - 5
+            size:(160,70)
         Button:
             id: p125
             center_x: root.width / 5
             top: root.top - 719.98 - 5
             size:(160,80)
             background_color: 0, 0, 0, 0
-            text: '0'
-            font_size: 52
             on_press: root.mark_hit(1,25)
+        Image:
+            id: p125_img
+            source: 'assets/images/transparent.png'
+            center_x: root.width / 5
+            top: root.top - 719.98
+            size:(160,70)
         Button:
             id: p225
             center_x: root.width*4/5
             top: root.top - 719.98 - 5
             size:(160,80)
             background_color: 0, 0, 0, 0
-            text: '0'
-            font_size: 52
             on_press: root.mark_hit(2,25)
+        Image:
+            id: p225_img
+            source: 'assets/images/transparent.png'
+            center_x: root.width*4/5
+            top: root.top - 719.98
+            size:(160,70)

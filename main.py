@@ -31,6 +31,24 @@ class Cricket(Screen):
         self.player2_scoreboard = {'20':0,'19':0,'18':0,'17':0,'16':0,'15':0,'25':0}
         self.player1_score = 0
         self.player2_score = 0
+        self.image_list = ['assets/images/transparent.png',
+                           'assets/images/hit-marker-singleslash.png',
+                           'assets/images/hit-marker-doubleslash.png',
+                           'assets/images/hit-marker-fullmark.png']
+        self.button_to_image_dict = {'p120':self.ids.p120_img,
+                                     'p119':self.ids.p119_img,
+                                     'p118':self.ids.p118_img,
+                                     'p117':self.ids.p117_img,
+                                     'p116':self.ids.p116_img,
+                                     'p115':self.ids.p115_img,
+                                     'p125':self.ids.p125_img,
+                                     'p220':self.ids.p220_img,
+                                     'p219':self.ids.p219_img,
+                                     'p218':self.ids.p218_img,
+                                     'p217':self.ids.p217_img,
+                                     'p216':self.ids.p216_img,
+                                     'p215':self.ids.p215_img,
+                                     'p225':self.ids.p225_img}
     def _clear_game(self):
         self.gameid = 0
         self.game_end = ''
@@ -56,6 +74,9 @@ class Cricket(Screen):
         self.ids.player2score.text = '0'
         self.ids.player1winner.text = ''
         self.ids.player2winner.text = ''
+        for key in self.button_to_image_dict:
+            self.button_to_image_dict[key].source = self.image_list[0]
+
 
     def mark_hit(self, player_num,dart_val):
         dart_val = str(dart_val)
@@ -63,7 +84,7 @@ class Cricket(Screen):
             if self.player1_scoreboard[dart_val] < 3:
                 self.player1_scoreboard[dart_val] += 1
                 self._write_game_line(self.player1id,dart_val,False)
-                self._terrible_function(player_num,dart_val)
+                self._update_marker(player_num,dart_val,self.player1_scoreboard[dart_val])
             else:
                 is_open = self._check_if_open(player_num, dart_val)
                 if is_open == True:
@@ -84,7 +105,7 @@ class Cricket(Screen):
             if self.player2_scoreboard[dart_val] < 3:
                 self.player2_scoreboard[dart_val] += 1
                 self._write_game_line(self.player2id,dart_val,False)
-                self._terrible_function(player_num,dart_val)
+                self._update_marker(player_num,dart_val,self.player2_scoreboard[dart_val])
             else:
                 is_open = self._check_if_open(player_num, dart_val)
                 if is_open == True:
@@ -117,38 +138,10 @@ class Cricket(Screen):
             else:
                 return False
 
-    def _terrible_function(self, player_num, dart_val):
-        id = str(player_num) + str(dart_val)
-        if id == '120':
-            self.ids.p120.text = str(self.player1_scoreboard[dart_val])
-        elif id == '119':
-            self.ids.p119.text = str(self.player1_scoreboard[dart_val])
-        elif id == '118':
-            self.ids.p118.text = str(self.player1_scoreboard[dart_val])
-        elif id == '117':
-            self.ids.p117.text = str(self.player1_scoreboard[dart_val])
-        elif id == '116':
-            self.ids.p116.text = str(self.player1_scoreboard[dart_val])
-        elif id == '115':
-            self.ids.p115.text = str(self.player1_scoreboard[dart_val])
-        elif id == '125':
-            self.ids.p125.text = str(self.player1_scoreboard[dart_val])
-        elif id == '220':
-            self.ids.p220.text = str(self.player2_scoreboard[dart_val])
-        elif id == '219':
-            self.ids.p219.text = str(self.player2_scoreboard[dart_val])
-        elif id == '218':
-            self.ids.p218.text = str(self.player2_scoreboard[dart_val])
-        elif id == '217':
-            self.ids.p217.text = str(self.player2_scoreboard[dart_val])
-        elif id == '216':
-            self.ids.p216.text = str(self.player2_scoreboard[dart_val])
-        elif id == '215':
-            self.ids.p215.text = str(self.player2_scoreboard[dart_val])
-        elif id == '225':
-            self.ids.p225.text = str(self.player2_scoreboard[dart_val])
-        else:
-            pass
+    def _update_marker(self, player_num, dart_val,hit_count):
+        id = 'p' + str(player_num) + str(dart_val)
+        self.button_to_image_dict[id].source = self.image_list[int(hit_count)]
+
 
     def _write_game_line(self,playerid,dart_val,ispoint):
         if ispoint:
@@ -198,6 +191,8 @@ class Menu(Screen):
         self._get_players()
         self._create_dropdowns(self.ids.player1select, self.dropdown1)
         self._create_dropdowns(self.ids.player2select, self.dropdown2)
+    def on_pre_enter(self):
+        Window.size = (480,800)
     def _get_players(self):
         sql = 'select username from player;'
         output = execute_sql_statement(create_connection('gamedb/dartboardos.db'),sql)
@@ -209,8 +204,6 @@ class Menu(Screen):
             dropdown.add_widget(btn)
         button_id.bind(on_release=dropdown.open)
         dropdown.bind(on_select=lambda instance, x: setattr(button_id, 'text', x))
-    def on_pre_enter(self):
-        Window.size = (480,800)
     def initialize_game(self):
         header = ['cricket',
                   datetime.datetime.now(),
@@ -225,7 +218,6 @@ class Menu(Screen):
         create_game_header(create_connection('gamedb/dartboardos.db'),header)
         self.manager.get_screen('cricket')._set_active_players()
         self.manager.get_screen('cricket')._setup_game()
-    pass
 
 class dartboardosApp(App):
     def build(self):
