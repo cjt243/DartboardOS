@@ -31,20 +31,24 @@ class Cricket(Screen):
         self.player2_scoreboard = {'20':0,'19':0,'18':0,'17':0,'16':0,'15':0,'25':0}
         self.player1_score = 0
         self.player2_score = 0
-        # self.button_to_image_dict = {'p120':self.ids.p120_img,
-        #                              'p119':self.ids.p119_img,
-        #                              'p118':self.ids.p118_img,
-        #                              'p117':self.ids.p117_img,
-        #                              'p116':self.ids.p116_img,
-        #                              'p115':self.ids.p115_img,
-        #                              'p125':self.ids.p125_img,
-        #                              'p220':self.ids.p220_img,
-        #                              'p219':self.ids.p219_img,
-        #                              'p218':self.ids.p218_img,
-        #                              'p217':self.ids.p217_img,
-        #                              'p216':self.ids.p216_img,
-        #                              'p215':self.ids.p215_img,
-        #                              'p225':self.ids.p225_img}
+        self.image_list = ['assets/images/transparent.png',
+                           'assets/images/hit-marker-singleslash.png',
+                           'assets/images/hit-marker-doubleslash.png',
+                           'assets/images/hit-marker-fullmark.png']
+        self.button_to_image_dict = {'p120':self.ids.p120_img,
+                                     'p119':self.ids.p119_img,
+                                     'p118':self.ids.p118_img,
+                                     'p117':self.ids.p117_img,
+                                     'p116':self.ids.p116_img,
+                                     'p115':self.ids.p115_img,
+                                     'p125':self.ids.p125_img,
+                                     'p220':self.ids.p220_img,
+                                     'p219':self.ids.p219_img,
+                                     'p218':self.ids.p218_img,
+                                     'p217':self.ids.p217_img,
+                                     'p216':self.ids.p216_img,
+                                     'p215':self.ids.p215_img,
+                                     'p225':self.ids.p225_img}
     def _clear_game(self):
         self.gameid = 0
         self.game_end = ''
@@ -70,6 +74,9 @@ class Cricket(Screen):
         self.ids.player2score.text = '0'
         self.ids.player1winner.text = ''
         self.ids.player2winner.text = ''
+        for key in self.button_to_image_dict:
+            self.button_to_image_dict[key].source = self.image_list[0]
+
 
     def mark_hit(self, player_num,dart_val):
         dart_val = str(dart_val)
@@ -77,7 +84,7 @@ class Cricket(Screen):
             if self.player1_scoreboard[dart_val] < 3:
                 self.player1_scoreboard[dart_val] += 1
                 self._write_game_line(self.player1id,dart_val,False)
-                self._update_marker()
+                self._update_marker(player_num,dart_val,self.player1_scoreboard[dart_val])
             else:
                 is_open = self._check_if_open(player_num, dart_val)
                 if is_open == True:
@@ -98,7 +105,7 @@ class Cricket(Screen):
             if self.player2_scoreboard[dart_val] < 3:
                 self.player2_scoreboard[dart_val] += 1
                 self._write_game_line(self.player2id,dart_val,False)
-                self._terrible_function(player_num,dart_val)
+                self._update_marker(player_num,dart_val,self.player2_scoreboard[dart_val])
             else:
                 is_open = self._check_if_open(player_num, dart_val)
                 if is_open == True:
@@ -131,7 +138,9 @@ class Cricket(Screen):
             else:
                 return False
 
-    # def _update_marker(self):
+    def _update_marker(self, player_num, dart_val,hit_count):
+        id = 'p' + str(player_num) + str(dart_val)
+        self.button_to_image_dict[id].source = self.image_list[int(hit_count)]
 
 
     def _write_game_line(self,playerid,dart_val,ispoint):
