@@ -6,9 +6,7 @@ The code is written specifically to run on the official Raspberry Pi 7" touch sc
 
 # Preview
 
-![alt text](https://raw.githubusercontent.com/cjtripp/DartboardOS/master/assets/Preview/mainmenu.png)
-
-
+![](https://github.com/cjt243/DartboardOS/blob/master/assets/Preview/gamepreview.png)
 
 ## Setup
 1. Install python 3 (will add full list of libraries used)
