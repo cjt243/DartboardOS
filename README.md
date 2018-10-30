@@ -4,6 +4,12 @@ DartboardOS is a project using python 3, kivy and sqlite to create a game scoreb
 
 The code is written specifically to run on the official Raspberry Pi 7" touch screen, but will work fine on a laptop screen, as the app window will auto-size on opening.
 
+# Preview
+
+![alt text](https://raw.githubusercontent.com/cjtripp/DartboardOS/master/assets/Preview/mainmenu.png)
+
+
+
 ## Setup
 1. Install python 3 (will add full list of libraries used)
 2. Install Kivy 1.10 and Cython 0.29
@@ -28,3 +34,5 @@ The code is written specifically to run on the official Raspberry Pi 7" touch sc
 ## Game Analytics
 
 Currently working on apps in Qlik Sense Cloud and Tableau Public. The code and links to examples will be linked here once complete
+
+
