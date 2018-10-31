@@ -110,6 +110,42 @@ class Cricket(Screen):
         else:
             print('Passed a player value != 1 or 2. Killing app.')
             exit()
+
+    def _undo_mark_hit(self):
+        try:
+            last_record = execute_sql_statement(create_connection('gamedb/dartboardos.db'),
+                                                'select game_id, hit, points, player_id, id from game_line where id = (select max(id) from game_line where game_id = {})'.format(self.gameid))[0]
+        except:
+            return None
+
+        if last_record[2] > 0:
+            if last_record[3] == self.player1id:
+                self.player1_score -= int(last_record[2])
+                self.ids.player1score.text = str(self.player1_score)
+                player = 1
+            else:
+                self.player2_score -= int(last_record[2])
+                self.ids.player2score.text = str(self.player2_score)
+                player = 2
+        else:
+            if last_record[3] == self.player1id:
+                player = 1
+                key = 'p' + str(player) + str(last_record[1])
+                i = self.image_list.index(self.button_to_image_dict[key].source)
+                self.button_to_image_dict[key].source = self.image_list[i-1]
+            else:
+                player = 2
+                key = 'p' + str(player) + str(last_record[1])
+                i = self.image_list.index(self.button_to_image_dict[key].source)
+                self.button_to_image_dict[key].source = self.image_list[i-1]
+
+        if player == 1:
+            self.player1_scoreboard[last_record[1]] -= 1
+        else:
+            self.player2_scoreboard[last_record[1]] -= 1
+
+        delete_game_line(create_connection('gamedb/dartboardos.db'),last_record[4])
+
     def _check_if_open(self, player_num,dart_val):
         """when a hit is recorded, check to see if the other player has
         closed out the number"""
