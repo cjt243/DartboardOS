@@ -18,6 +18,7 @@ The code is written specifically to run on the official Raspberry Pi 7" touch sc
 
 * Initialize a list of your friends into the player table.
 * Scoreboard for cricket with running point totals
+* Undo hits in reverse sequence (in case you fat finger a slash mark)
 * Database
     * Each game is recorded in a table called game_header
     * Each hit marked is recorded in a table called game_line
@@ -25,7 +26,6 @@ The code is written specifically to run on the official Raspberry Pi 7" touch sc
 
 ## Functionality Not Yet Implemented
 
-* The Undo button is currently inactive
 * 301 and 501 game modes
 * Add a new player from the Main Menu
 
