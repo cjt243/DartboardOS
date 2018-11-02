@@ -4,7 +4,7 @@ DartboardOS is a project using python 3, kivy and sqlite to create a game scoreb
 
 The code is written specifically to run on the official Raspberry Pi 7" touch screen, but will work fine on a laptop screen, as the app window will auto-size on opening.
 
-## [Get Started](https://github.com/cjt243/DartboardOS/blob/master/getstarted.txt)
+## [Get Started](https://github.com/cjt243/DartboardOS/blob/master/getstarted.md)
 
 
 ## Preview
