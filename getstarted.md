@@ -1,6 +1,6 @@
-Steps to install DartboardOS
+# Steps to install DartboardOS
 
-Programs to install:
+## Programs to install:
 
 1. Install python 3.6+ from https://www.python.org --make sure when you execute the main.py, you are using python3
 2. Enter 'pip install cython' into the command line (cmd or powershell on Windows, Terminal on Mac or Linux)
