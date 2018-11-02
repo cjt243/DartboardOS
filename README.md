@@ -8,8 +8,7 @@ The code is written specifically to run on the official Raspberry Pi 7" touch sc
 
 ![](https://github.com/cjt243/DartboardOS/blob/master/assets/Preview/gamepreview.png)
 
-## Setup
-![Get Started](https://github.com/cjt243/DartboardOS/blob/master/getstarted.txt)
+## [Get Started](https://github.com/cjt243/DartboardOS/blob/master/getstarted.txt)
 
 ## Current Functionality
 
