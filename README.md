@@ -9,11 +9,8 @@ The code is written specifically to run on the official Raspberry Pi 7" touch sc
 ![](https://github.com/cjt243/DartboardOS/blob/master/assets/Preview/gamepreview.png)
 
 ## Setup
-1. Install python 3 (will add full list of libraries used)
-2. Install Kivy 1.10 and Cython 0.29
-3. Run setupdb.py (found in the gamedb dir)
-4. Edit initialize_players.py to include your friends, and run
- 
+![Get Started](https://github.com/cjt243/DartboardOS/blob/master/getstarted.txt)
+
 ## Current Functionality
 
 * Initialize a list of your friends into the player table.
@@ -32,5 +29,3 @@ The code is written specifically to run on the official Raspberry Pi 7" touch sc
 ## Game Analytics
 
 Currently working on apps in Qlik Sense Cloud and Tableau Public. The code and links to examples will be linked here once complete
-
-
